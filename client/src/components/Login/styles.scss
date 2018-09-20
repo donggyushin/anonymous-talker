@@ -1,0 +1,41 @@
+@import "utils";
+
+.container {
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    span {
+        font-family: 'Noto Serif KR', sans-serif;
+    }
+    button {
+        border: 0;
+        width: 119px;
+        height: 119px;
+        border-radius: 50%;
+        background-color: white;
+        color: $cooper;
+        font-weight: 900;
+        font-size: 1.2rem;
+        transition: background-color 0.4s ease-in-out;
+        margin-top: 70px;
+
+        &:hover{
+            background-color: $light_cooper;
+        }
+
+        &:active{
+            color: white;
+        }
+    }
+    input {
+        margin-top: 100px;
+        width: 458px;
+        height: 61px;
+        padding-left: 35px;
+        font-size: 1.6rem;
+        caret-color: deeppink;
+        font-family: 'Noto Serif KR', sans-serif;
+    }
+}

@@ -1,2 +1,11 @@
 @import '~open-color/open-color';
 @import '~include-media/dist/include-media';
+@import url('https://fonts.googleapis.com/css?family=Noto+Serif+KR');
+
+$cooper :#6A351F;
+$light_cooper: #F2A566;
+
+@mixin border {
+    border: 1px solid white;
+}
+

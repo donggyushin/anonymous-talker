@@ -4,11 +4,14 @@ import App from "components/App/App";
 
 class AppContainer extends Component {
   render() {
-    return <App />;
+    const { loggedIn } = this.props;
+    return <App loggedIn={loggedIn} />;
   }
 }
 
-const mapStateToProps = state => ({});
+const mapStateToProps = state => ({
+  loggedIn: state.user.loggedIn
+});
 
 const mapDispatchToProps = dispatch => ({});
 

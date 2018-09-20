@@ -1,0 +1,40 @@
+@import "utils";
+
+.container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    .chatLog {
+        .text {
+            width: 785px;
+            height: 533px;
+            border: 0px;
+            overflow-y: scroll;
+        }
+        
+        
+    }
+    .input {
+        .message {
+            width: 705px;
+            height: 60px;
+            border: 0;
+            overflow-y: scroll;
+ 
+        }
+        button {
+            position: relative;
+            bottom: 27px;
+            width: 80px;
+            height: 65px;
+            border: 0;
+            background-color: #FFEB32;
+            font-size: 1.1rem;
+            color: $cooper;
+            &:active {
+                color: white;
+            }
+        }
+    }
+}

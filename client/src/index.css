@@ -1,5 +1,12 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: 'Noto Serif KR', sans-serif;
+  background-image: url("images/background.jpg");
+  color: white;
+}
+
+
+::-webkit-scrollbar { 
+    display: none; 
 }
