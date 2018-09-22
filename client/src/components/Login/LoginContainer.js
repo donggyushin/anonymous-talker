@@ -5,8 +5,25 @@ import * as userActions from "store/modules/user";
 
 class LoginContainer extends Component {
   state = {
-    displayName: ""
+    displayName: "",
+    hour: "",
+    minute: "",
+    seconds: ""
   };
+
+  componentDidMount() {
+    setInterval(() => {
+      var d = new Date();
+      this.setState({
+        ...this.state,
+        hour: d.getHours(),
+        minute: d.getMinutes(),
+        seconds: d.getSeconds()
+      });
+    }, 1000);
+  }
+
+  _timerStart = () => {};
 
   _handleInput = e => {
     const value = e.target.value;
@@ -23,12 +40,15 @@ class LoginContainer extends Component {
   };
 
   render() {
-    const { displayName } = this.state;
+    const { displayName, hour, minute, seconds } = this.state;
     return (
       <Login
         handleInput={this._handleInput}
         displayName={displayName}
         onClickButton={this._onClickButton}
+        minute={minute}
+        hour={hour}
+        seconds={seconds}
       />
     );
   }

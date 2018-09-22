@@ -32,8 +32,8 @@ const Chat = ({ message, handleInput, onClickEnter, chatLogs }) => {
 const ChatItem = ({ displayName, message }) => {
   return (
     <div className={cx("chatItemContainer")}>
-      <span>{displayName}</span>
-      <span>{message}</span>
+      <span className={cx("username")}>{displayName}</span>
+      <span className={cx("message")}>{message}</span>
     </div>
   );
 };

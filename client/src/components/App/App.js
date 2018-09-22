@@ -5,6 +5,8 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import LoginContainer from "components/Login/LoginContainer";
 import NavigationVarContainer from "components/NavigationVar/NavigationVarContainer";
 import ChatContainer from "components/Chat/ChatContainer";
+import UserListContainer from "components/UserList/UserListContainer";
+import ClockContainer from "components/Clock/ClockContainer";
 
 const cx = classNames.bind(styles);
 
@@ -25,7 +27,11 @@ const PublicComponent = () => (
 const PrivateComponent = () => (
   <div className={cx("private")}>
     <NavigationVarContainer />
-    <ChatContainer />
+    <ClockContainer />
+    <div className={cx("container")}>
+      <ChatContainer className={cx("chat")} />
+      <UserListContainer className={cx("userList")} />
+    </div>
   </div>
 );
 

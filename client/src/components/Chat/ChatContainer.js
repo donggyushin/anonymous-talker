@@ -63,6 +63,17 @@ class ChatContainer extends Component {
     }
   };
 
+  onClickSubmitButton = () => {
+    const { apiSendMessage } = this.props;
+    const { message } = this.state;
+
+    apiSendMessage(socket, message);
+    this.setState({
+      ...this.state,
+      message: ""
+    });
+  };
+
   handleInput = event => {
     const value = event.target.value;
     this.setState({
@@ -72,8 +83,8 @@ class ChatContainer extends Component {
 
   render() {
     const { message } = this.state;
-    const { chatLogs } = this.props;
-    const { handleInput, onClickEnter } = this;
+    const { chatLogs, myNickName } = this.props;
+    const { handleInput, onClickEnter, onClickSubmitButton } = this;
     return (
       // <Chat
       //   message={message}
@@ -90,7 +101,7 @@ class ChatContainer extends Component {
             }}
           >
             {chatLogs.map(chat => (
-              <ChatItem key={counter++} {...chat} />
+              <ChatItem key={counter++} {...chat} myNickName={myNickName} />
             ))}
           </div>
         </div>
@@ -102,24 +113,25 @@ class ChatContainer extends Component {
             type="text"
             onKeyPress={onClickEnter}
           />
-          <button>SUBMIT</button>
+          <button onClick={onClickSubmitButton}>SUBMIT</button>
         </div>
       </div>
     );
   }
 }
 
-const ChatItem = ({ displayName, message }) => {
+const ChatItem = ({ displayName, message, myNickName }) => {
   return (
-    <div className={cx("chatItemContainer")}>
-      <span>{displayName}</span>
-      <span>{message}</span>
+    <div className={displayName === myNickName ? cx("my") : cx("other")}>
+      <span className={cx("username")}>{displayName}</span>
+      <span className={cx("message")}>{message}</span>
     </div>
   );
 };
 
 const mapStateToProps = state => ({
-  chatLogs: state.chat.chatLogs
+  chatLogs: state.chat.chatLogs,
+  myNickName: state.user.displayName
 });
 
 const mapDispatchToProps = dispatch => ({

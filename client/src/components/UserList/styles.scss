@@ -1,0 +1,8 @@
+@import "utils";
+
+.container {
+    width: 200px;
+    @include border;
+    position: relative;
+    left: 200px;
+}
