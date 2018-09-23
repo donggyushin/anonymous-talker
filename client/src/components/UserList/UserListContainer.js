@@ -4,11 +4,15 @@ import UserList from "components/UserList/UserList";
 
 class UserListContainer extends Component {
   render() {
-    return <UserList />;
+    const { userList } = this.props;
+
+    return <UserList userList={userList} />;
   }
 }
 
-const mapStateToProps = state => ({});
+const mapStateToProps = state => ({
+  userList: state.user.userList
+});
 
 const mapDispatchToProps = dispatch => ({});
 

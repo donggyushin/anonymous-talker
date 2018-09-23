@@ -7,6 +7,7 @@ import styles from "./styles.scss";
 import classNames from "classnames/bind";
 
 import * as chatActions from "store/modules/chat";
+import * as userActions from "store/modules/user";
 
 const cx = classNames.bind(styles);
 let counter = 1;
@@ -28,10 +29,24 @@ class ChatContainer extends Component {
       const { receiveMessage } = this.props;
       receiveMessage(displayName, message);
     });
+
+    socket.on("receive displayName", userList => {
+      const { getUserList } = this.props;
+      getUserList(userList);
+    });
+
+    socket.on("error message", message => {
+      alert(message);
+      this.props.logout();
+    });
+
+    //접속하면 server에 displayName 을 먼저 보내줌.
+    socket.emit("send displayName", this.props.myNickName);
   }
 
   componentWillUnmount() {
-    socket.disconnect();
+    socket.emit("user leave", this.props.myNickName);
+    socket.disconnect(this.props.myNickName);
   }
 
   scrollToBottom = () => {
@@ -138,7 +153,9 @@ const mapDispatchToProps = dispatch => ({
   apiSendMessage: (socket, message) =>
     dispatch(chatActions.apiSendMessage(socket, message)),
   receiveMessage: (displayName, message) =>
-    dispatch(chatActions.receiveMessage(displayName, message))
+    dispatch(chatActions.receiveMessage(displayName, message)),
+  getUserList: userList => dispatch(userActions.getUserList(userList)),
+  logout: () => dispatch(userActions.logout())
 });
 
 export default connect(

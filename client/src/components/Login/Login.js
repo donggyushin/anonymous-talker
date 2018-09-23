@@ -20,7 +20,9 @@ const Login = ({
         {seconds >= 0 && seconds < 10 ? "0" + seconds : seconds}
       </span>
       <span>우리는 어디다 마음을 털어놓아야 하나</span>
-      <button onClick={onClickButton}>START!</button>
+      <button className={cx("button")} onClick={onClickButton}>
+        START!
+      </button>
       <input
         type="text"
         onChange={handleInput}

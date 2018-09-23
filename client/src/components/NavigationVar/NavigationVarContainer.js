@@ -13,7 +13,9 @@ class NavigationVarContainer extends Component {
   }
 }
 
-const mapStateToProps = state => ({});
+const mapStateToProps = state => ({
+  myNickName: state.user.displayName
+});
 
 const mapDispatchToProps = dispatch => ({
   logout: () => dispatch(userActions.logout())

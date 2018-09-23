@@ -2,7 +2,13 @@
 
 .container {
     width: 200px;
-    @include border;
     position: relative;
     left: 200px;
+    margin-right: 90px;
+    .title{
+        border-bottom: 1px solid snow;
+    }
+    .body{
+        margin-top: 13px;
+    }
 }
